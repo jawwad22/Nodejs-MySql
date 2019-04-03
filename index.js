@@ -36,4 +36,20 @@ app.get('/employees',(req,res)=>{
             console.log(err);
         }
     })
+});
+
+app.post('/employees',(req,res)=>{
+console.log(req.body)
+
+    var sql="Insert into Employee (Name,Email,Salary) Values('"+req.body.name+"','"+req.body.email+"','"+req.body.salary+"')"
+    mysqlConnection.query(sql,(err,rows,fields)=>{
+        if(!err){
+            res.send(rows)
+            console.log(rows);
+            
+        }
+        else{
+            console.log(err);
+        }
+    })
 })
